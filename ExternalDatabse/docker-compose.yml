@@ -1,0 +1,19 @@
+version: "3.8"
+    
+services:
+  wordpress:
+    container_name: wordpress_host
+    image: wordpress:php8.0-apache
+    volumes:
+      - wordpress_data:/var/www/html
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: ${DB_HOST}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASS}
+      WORDPRESS_DB_NAME: ${DB_NAME}
+
+volumes:
+  wordpress_data: {}
